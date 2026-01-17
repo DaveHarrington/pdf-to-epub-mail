@@ -1,0 +1,21 @@
+[Unit]
+Description=PDF to EPUB converter service
+After=network.target
+
+[Service]
+User=www-data
+WorkingDirectory=/opt/pdf-to-epub-mail
+ENVIRONEMNT=KINDLE_EMAIL=
+ENVIRONEMNT=SMTP_HOST=smtp.gmail.com
+ENVIRONEMNT=SMTP_PORT=587
+ENVIRONEMNT=SMTP_TLS=true
+ENVIRONEMNT=SMTP_USER=
+ENVIRONEMNT=SMTP_PASS=
+ENVIRONEMNT=SMTP_FROM=
+ExecStart=/usr/bin/uv run main.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+
